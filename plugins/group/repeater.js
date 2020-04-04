@@ -16,13 +16,19 @@ module.exports = {
                 return next();
             }
             // 没有记录最后一次信息，跳过
-            if (!latest_message) {
+            if (!latest_message[meta.groupId]) {
                 latest_message[meta.groupId] = meta;
                 repeat_count[meta.groupId] = 0;
                 return next();
             }
-            // 计数
-            if (latest_message[meta.groupId].sender.userId == meta.sender.userId && latest_message[meta.groupId].message == meta.message) {
+            // 不是同一句话，清空计数，中断逻辑
+            if (latest_message[meta.groupId].message != meta.message) {
+                latest_message[meta.groupId] = meta;
+                repeat_count[meta.groupId] = 0;
+                return next();
+            }
+            // 计数，只有不同用户复读才计数
+            if (latest_message[meta.groupId].sender.userId != meta.sender.userId) {
                 repeat_count[meta.groupId]++;
             }
             latest_message[meta.groupId] = meta;
