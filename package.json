@@ -9,6 +9,7 @@
   "author": "BackRunner",
   "license": "Apache 2.0",
   "dependencies": {
-    "koishi": "^1.11.2"
+    "koishi": "^1.11.2",
+    "nzh": "^1.0.4"
   }
 }
