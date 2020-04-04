@@ -65,7 +65,7 @@ module.exports = {
             // ==== 指令解析 ====
 
             // 基本群管指令只拦截标准信息
-            if (meta.subType != "normal") {
+            if (meta.subType != 'normal') {
                 return next();
             }
             // 不是指令，跳过
@@ -88,7 +88,7 @@ module.exports = {
                 return next();
             }
             // 权限检查
-            if (meta.sender.role == "member") {
+            if (meta.sender.role == 'member') {
                 // 发送权限不足
                 meta.$send(`[CQ:at,qq=${meta.sender.userId}]，你的权限不足`);
                 return next();
