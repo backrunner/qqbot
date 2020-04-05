@@ -21,6 +21,8 @@ koishi run
 
 - 基本的群管指令（basicCommand）
 - 群聊新成员欢迎信息（welcome）
+- 自动同意入群（autoConfirmApply）
+- 数学算式验证（mathValidation）
 - 复读机（repeater）
 
 如果你只是想用我们项目中的某一个功能模块，你可以自行在koishi.config.js里调整加载的插件。
