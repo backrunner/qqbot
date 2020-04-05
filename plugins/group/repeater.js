@@ -8,7 +8,7 @@ function randomInt(min, max) {
 }
 
 module.exports = {
-    name: 'repeater',
+    name: 'group-repeater',
     apply: ctx => {
         ctx.middleware((meta, next) => {
             // 不是普通信息，跳过
