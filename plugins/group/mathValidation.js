@@ -52,7 +52,7 @@ module.exports = {
                 return next();
             }
             // 只处理纯数字
-            if (!(/^\d+$/.test(meta.$parsed.message))) {
+            if (!(/^(-|\+)?\d+$/.test(meta.$parsed.message))) {
                 return next();
             }
             if (answer[`${meta.groupId},${meta.userId}`] == parseInt(meta.$parsed.message)) {
@@ -61,6 +61,16 @@ module.exports = {
                 answer[`${meta.groupId},${meta.userId}`] = null;
             } else {
                 meta.$send(`[CQ:at,qq=${meta.userId}] 验证失败，请重试`);
+            }
+        });
+        // 监听离群消息，及时清除相关的数据
+        ctx.receiver.on('group-decrease', (meta) => {
+            if (answer[`${meta.groupId},${meta.userId}`]) {
+                answer[`${meta.groupId},${meta.userId}`] = null;
+            }
+            if (timer[`${meta.groupId},${meta.userId}`]) {
+                clearTimeout(timer[`${meta.groupId},${meta.userId}`]);
+                timer[`${meta.groupId},${meta.userId}`] = null;
             }
         });
     }
