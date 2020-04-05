@@ -1,6 +1,6 @@
-# 二号机（qqbot）
+# 空格的三号机（qqbot）
 
-该项目是一个基于CoolQ + CQHTTP + Koishi打造的QQ机器人。
+该项目是一个基于CoolQ + CQHTTP + Koishi打造的QQ机器人，取代之前的二号机项目。
 
 得益于Koishi的插件架构，我在这个项目内把每一个独立的功能模块都拆分成了一个独立的插件。
 
@@ -20,6 +20,7 @@ koishi run
 ## 插件列表
 
 - 基本的群管指令（basicCommand）
+- 群聊新成员欢迎信息（welcome）
 - 复读机（repeater）
 
 如果你只是想用我们项目中的某一个功能模块，你可以自行在koishi.config.js里调整加载的插件。
