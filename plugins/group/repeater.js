@@ -8,7 +8,7 @@ const trigger_rate = 0.25;
 module.exports = {
     name: 'group-repeater',
     apply: ctx => {
-        ctx.middleware((meta, next) => {
+        ctx.prependMiddleware((meta, next) => {
             // 不是普通信息，跳过
             if (meta.subType != 'normal') {
                 return next();
@@ -31,7 +31,7 @@ module.exports = {
             }
             latest_message[meta.groupId] = meta;
             // 大于三次才触发复读逻辑
-            if (repeat_count[meta.groupId] < Random.randomInt(3, 5)) {
+            if (repeat_count[meta.groupId] < Random.randomInt(2, 5)) {
                 return next();
             }
             if (Math.random() < trigger_rate) {
