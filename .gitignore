@@ -115,6 +115,6 @@ temp
 
 # Config file
 *.config.js
-
+config
 # vscode
 .vscode

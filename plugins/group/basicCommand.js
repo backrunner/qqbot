@@ -1,6 +1,9 @@
 // 依赖
 const nzh = require('nzh/cn');
 
+// 开关
+const { basic_command_reply } = require('../../bot.config');
+
 const commands = [
     {
         key: "ban",
@@ -111,6 +114,10 @@ module.exports = {
                 ctx.sender.setGroupWholeBan(meta.groupId);
             } else if (key == 'all_unban') {
                 ctx.sender.setGroupWholeBan(meta.groupId, false);
+            }
+
+            if (basic_command_reply) {
+                meta.$send(`[CQ:at,qq=${meta.sender.userId}]，已执行操作`);
             }
 
             return next();
