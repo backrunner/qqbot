@@ -3,7 +3,7 @@ const Random = require('../../utils/random');
 let latest_message = {};
 let repeat_count = {};
 
-const trigger_rate = 0.25;
+const trigger_rate = 0.75;
 
 module.exports = {
     name: 'group-repeater',
@@ -30,7 +30,7 @@ module.exports = {
                 repeat_count[meta.groupId]++;
             }
             latest_message[meta.groupId] = meta;
-            // 大于三次才触发复读逻辑
+            // 大于2次才触发复读逻辑
             if (repeat_count[meta.groupId] < Random.randomInt(2, 5)) {
                 return next();
             }
