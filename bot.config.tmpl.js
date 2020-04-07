@@ -6,5 +6,6 @@ module.exports = {
         banUser: true,
         banTime: 300,
         word_list: []
-    }
+    },
+    friendWhiteList: []
 };

@@ -19,6 +19,14 @@ koishi run
 
 ## 插件列表
 
+### 通用
+
+- base64编解码（base64）
+
+### 用户
+
+- 好友白名单（friendWhiteList）
+
 ### 群聊
 
 - 基本的群管指令（basicCommand）
