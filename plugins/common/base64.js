@@ -1,6 +1,4 @@
-function buildMessage(meta, message) {
-    return (meta.messageType != 'private' ? `[CQ:at,qq=${meta.userId}] ` : '') + message;
-}
+const { buildMessage } = require('../../utils/message.js');
 
 module.exports = {
     name: 'base64',
