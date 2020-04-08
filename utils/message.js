@@ -1,6 +1,6 @@
 const re = {
     cqimg: /\[CQ:image,file=([^,]+),url=([^\]]+)\]/
-}
+};
 
 module.export = {
     buildMessage(meta, message) {
