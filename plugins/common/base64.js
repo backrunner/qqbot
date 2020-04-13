@@ -12,7 +12,7 @@ module.exports = {
                     if (encode.length < 1) {
                         return meta.$send(buildMessage(meta, '没有内容可以编码'));
                     }
-                    meta.$send(buildMessage(meta, Buffer.from(encode, 'utf-8').toString('base64')));
+                    return meta.$send(buildMessage(meta, Buffer.from(encode, 'utf-8').toString('base64')));
                 } else if (options.decode && typeof options.decode != 'boolean') {
                     let code = options.decode.toString().trim();
                     if (code.length < 1) {
