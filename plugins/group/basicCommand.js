@@ -93,8 +93,7 @@ module.exports = {
             // 权限检查
             if (meta.sender.role == 'member') {
                 // 发送权限不足
-                meta.$send(`[CQ:at,qq=${meta.sender.userId}]，你的权限不足`);
-                return next();
+                return meta.$send(`[CQ:at,qq=${meta.sender.userId}]，你的权限不足`);
             }
 
             // ==== 指令执行 ====
@@ -117,10 +116,10 @@ module.exports = {
             }
 
             if (basic_command_reply) {
-                meta.$send(`[CQ:at,qq=${meta.sender.userId}]，已执行操作`);
+                return meta.$send(`[CQ:at,qq=${meta.sender.userId}]，已执行操作`);
             }
 
-            return next();
+            return;
         });
     },
 };

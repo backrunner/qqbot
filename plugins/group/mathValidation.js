@@ -39,6 +39,7 @@ module.exports = {
                 // 一分钟没有完成验证，踢出
                 ctx.sender.sendGroupMsg(meta.groupId, `[CQ:at,qq=${meta.userId}] 很遗憾您没有完成验证，请下次再来`);
                 ctx.sender.setGroupKick(meta.groupId, meta.userId, false);
+                timer[`${meta.groupId},${meta.userId}`] = null;
             }, 60 * 1000);
         });
         // 监听普通消息
@@ -56,11 +57,11 @@ module.exports = {
                 return next();
             }
             if (answer[`${meta.groupId},${meta.userId}`] == parseInt(meta.$parsed.message)) {
-                meta.$send(`[CQ:at,qq=${meta.userId}] 验证成功`);
                 clearTimeout(timer[`${meta.groupId},${meta.userId}`]);
                 answer[`${meta.groupId},${meta.userId}`] = null;
+                return meta.$send(`[CQ:at,qq=${meta.userId}] 验证成功`);
             } else {
-                meta.$send(`[CQ:at,qq=${meta.userId}] 验证失败，请重试`);
+                return meta.$send(`[CQ:at,qq=${meta.userId}] 验证失败，请重试`);
             }
         });
         // 监听离群消息，及时清除相关的数据
