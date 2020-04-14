@@ -23,6 +23,7 @@ koishi run
 
 - base64编解码（base64）
 - 二维码生成与扫描（qrcode）
+- 随机数生成（random）
 
 ### 用户
 
