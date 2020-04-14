@@ -9,7 +9,9 @@
   "author": "BackRunner",
   "license": "Apache 2.0",
   "dependencies": {
+    "axios": "^0.19.2",
     "koishi": "^1.11.2",
-    "nzh": "^1.0.4"
+    "nzh": "^1.0.4",
+    "qrcode": "^1.4.4"
   }
 }

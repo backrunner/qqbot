@@ -2,7 +2,7 @@ const re = {
     cqimg: /\[CQ:image,file=([^,]+),url=([^\]]+)\]/
 };
 
-module.export = {
+module.exports = {
     buildMessage(meta, message) {
         return (meta.messageType != 'private' ? `[CQ:at,qq=${meta.userId}] ` : '') + message;
     },
