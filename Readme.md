@@ -22,6 +22,7 @@ koishi run
 ### 通用
 
 - base64编解码（base64）
+- urlencode/urlcode（urlcode）
 - 二维码生成与扫描（qrcode）
 - 随机数生成（random）
 
