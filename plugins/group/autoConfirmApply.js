@@ -1,5 +1,5 @@
-const config = require('../../bot.config').auto_confirm_apply;
-const enable = config.auto_confirm_apply.enable;
+const config = require('../../bot.config.js').auto_confirm_apply;
+const enable = config.enable;
 const all_enable = config.all_enable;
 const enable_groups = config.enable_groups;
 
