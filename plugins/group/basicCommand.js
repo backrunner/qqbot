@@ -38,7 +38,7 @@ const extract_qq = (message) => {
 };
 
 const extract_time = (message) => {
-    const extract_regex = /(\d+|[\u4e00-\u9fa5]+)(天|小时|分(钟)?|秒)/g;
+    const extract_regex = /(\d+|[\u4e00-\u9fa5]+)(天|个?小时|分(钟)?|秒)/g;
     let times = message.match(extract_regex);
     let seconds = 0;
     // 抽出数字
