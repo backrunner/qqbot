@@ -20,12 +20,6 @@
   "devDependencies": {
     "f2elint": "^0.1.4"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "f2elint exec commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "f2elint exec lint-staged"
-    }
-  },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,vue}": "f2elint exec eslint"
   }
