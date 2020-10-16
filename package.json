@@ -13,7 +13,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "csprng": "^0.1.2",
-    "koishi": "^2.3.2",
+    "koishi": "^1.12.0",
     "nzh": "^1.0.4",
     "qrcode": "^1.4.4"
   },
