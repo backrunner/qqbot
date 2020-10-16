@@ -1,3 +1,3 @@
 module.exports = {
-    COMMON_API: '',
+  COMMON_API: '',
 };

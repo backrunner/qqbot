@@ -1,18 +1,32 @@
 {
   "name": "qqbot",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "koishi run",
+    "f2elint-scan": "f2elint scan",
+    "f2elint-fix": "f2elint fix"
   },
   "author": "BackRunner",
   "license": "Apache 2.0",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "csprng": "^0.1.2",
-    "koishi": "^1.12.0",
+    "koishi": "^2.3.2",
     "nzh": "^1.0.4",
     "qrcode": "^1.4.4"
+  },
+  "devDependencies": {
+    "f2elint": "^0.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "f2elint exec commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "f2elint exec lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,vue}": "f2elint exec eslint"
   }
 }
