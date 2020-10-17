@@ -2,12 +2,15 @@
 const { sensitive_words } = require('../../bot.config');
 
 // 配置
-const { deleteMsg, banUser, banTime, word_list } = sensitive_words;
+const { enable, deleteMsg, banUser, banTime, word_list } = sensitive_words;
 
 module.exports = {
   name: 'sensitive-word',
   apply: (ctx) => {
     ctx.middleware((meta, next) => {
+      if (!enable) {
+        return next();
+      }
       // 过滤掉notice
       if (meta.subType === 'notice') {
         return next();
