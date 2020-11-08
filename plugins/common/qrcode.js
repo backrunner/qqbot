@@ -6,7 +6,7 @@ const { COMMON_API } = require('../../api.config');
 const timer_decode = {};
 
 const regex_encode = /^(((生成)|(创建)|(制造|作))二维码)/;
-const regex_decode = /^(((解析?)|(识别))二维码)/;
+const regex_decode = /^(((解析?)|(识别))((二维)?码))/;
 
 function requestAPI(meta, params) {
   return new Promise((resolve) => {

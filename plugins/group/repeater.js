@@ -1,14 +1,18 @@
 const Random = require('../../utils/random');
+const config = require('../../bot.config').repeater;
 
 const latest_message = {};
 const repeat_count = {};
 
-const trigger_rate = 0.75;
+const trigger_rate = config.triggerRate || 0.25;
 
 module.exports = {
   name: 'group-repeater',
   apply: (ctx) => {
     ctx.prependMiddleware((meta, next) => {
+      if (!config.enable) {
+        return next();
+      }
       // 不是普通信息，跳过
       if (meta.subType !== 'normal') {
         return next();
