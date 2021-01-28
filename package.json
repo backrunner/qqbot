@@ -11,16 +11,17 @@
   "author": "BackRunner",
   "license": "Apache 2.0",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "csprng": "^0.1.2",
     "iconv": "^2.3.5",
     "koishi": "^1.12.0",
+    "moment": "^2.29.1",
     "nzh": "^1.0.4",
     "qrcode": "^1.4.4",
     "tencent-ai-nodejs-sdk": "^1.0.14"
   },
   "devDependencies": {
-    "f2elint": "^0.1.4"
+    "f2elint": "^0.4.4"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,vue}": "f2elint exec eslint"
