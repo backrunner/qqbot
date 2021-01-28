@@ -101,12 +101,12 @@ class Scheduler {
             tillParts.forEach((matched) => {
               if (matched[1] === 'end') {
                 if (task.endTime) {
-                  toSend = toSend.replace(matched[0], time.diff(moment(task.endTime), 'days'));
+                  toSend = toSend.replace(matched[0], moment(task.endTime).diff(time, 'days'));
                 }
               } else {
                 try {
                   const tillDay = moment(matched[1], 'YYYYMMDD');
-                  toSend = toSend.replace(matched[0], time.diff(tillDay, 'days'));
+                  toSend = toSend.replace(matched[0], tillDay.diff(time, 'days'));
                 } catch (err) { /* do nothing */ }
               }
             });
@@ -189,8 +189,12 @@ module.exports = {
             if (toSend) {
               toSend += '\n';
             }
-            toSend += `[${index + 1}] ${task.name}\nto: ${task.target}\n类型: ${taskTypeMap[task.type]}\n${task.message}`;
+            toSend += `[${index + 1}] ${task.name}\nto: ${task.target}\n类型: ${taskTypeMap[task.type]}`;
+            if (task.type === 'onetime') {
+              toSend += `\n提醒时间: ${moment(task.time).format('YYYY-MM-DD HH:mm:ss')}`;
+            }
             if (task.type === 'daily') {
+              toSend += `\n提醒时间: 每天 ${task.time}`;
               if (task.startTime) {
                 toSend += `\n开始时间: ${moment(task.startTime).format('YYYY-MM-DD HH:mm:ss')}`;
               }
@@ -198,6 +202,7 @@ module.exports = {
                 toSend += `\n结束时间: ${moment(task.endTime).format('YYYY-MM-DD HH:mm:ss')}`;
               }
             }
+            toSend += `\n提醒内容: ${task.message}`;
           });
           return meta.$send(toSend);
         } else {
